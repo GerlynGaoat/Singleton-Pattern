@@ -1,13 +1,13 @@
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
-		
-		
+
+
 public class PagibigQueuingSystem1 {
 
-	public static void main(String[] args) {
-		
-		QueueSystem centralizedQueue = new QueueSystem();
+    public static void main(String[] args) {
+
+        QueueSystem centralizedQueue = new QueueSystem();
         HelpDeskStation helpDesk1 = new HelpDeskStation(centralizedQueue);
         HelpDeskStation helpDesk2 = new HelpDeskStation(centralizedQueue);
         HelpDeskStation helpDesk3 = new HelpDeskStation(centralizedQueue);
@@ -15,10 +15,10 @@ public class PagibigQueuingSystem1 {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-        	
-        	System.out.println("Gerlyn Gaoat | 3BSCS-2\n");
-        	System.out.println("Pagibig Centralized System\n");
-        	System.out.println("MENU:");
+
+            System.out.println("Gerlyn Gaoat | 3BSCS-2\n");
+            System.out.println("Centralized Queuing System for Pag-ibig Office\n");
+            System.out.println("MENU:");
             System.out.println("1. Enqueue customer");
             System.out.println("2. Serve next customer");
             System.out.println("3. Reset queue");
@@ -75,79 +75,79 @@ public class PagibigQueuingSystem1 {
 
                 default:
                     System.out.println("Invalid choice. Please try again.");
-                    
+
                     scanner.close();
             }
         }
     }
 }
-		
 
-		class QueueSystem {
-		    private Queue<Integer> queue = new LinkedList<>();
 
-		    public void enqueue(int number) {
-		        queue.add(number);
-		    }
+class QueueSystem {
+    private Queue<Integer> queue = new LinkedList<>();
 
-		    public int dequeue() {
-		        if (!isEmpty()) {
-		            return queue.poll();
-		        } else {
-		            throw new IllegalStateException("The queue is empty.");
-		        }
-		    }
+    public void enqueue(int number) {
+        queue.add(number);
+    }
 
-		    public int peek() {
-		        if (!isEmpty()) {
-		            return queue.peek();
-		        } else {
-		            throw new IllegalStateException("The queue is empty.");
-		        }
-		    }
+    public int dequeue() {
+        if (!isEmpty()) {
+            return queue.poll();
+        } else {
+            throw new IllegalStateException("The queue is empty.");
+        }
+    }
 
-		    public void resetQueue(int newStartingNumber) {
-		        queue.clear();
-		        enqueue(newStartingNumber);
-		    }
+    public int peek() {
+        if (!isEmpty()) {
+            return queue.peek();
+        } else {
+            throw new IllegalStateException("The queue is empty.");
+        }
+    }
 
-		    public boolean isEmpty() {
-		        return queue.isEmpty();
-		    }
+    public void resetQueue(int newStartingNumber) {
+        queue.clear();
+        enqueue(newStartingNumber);
+    }
 
-		    public int size() {
-		        return queue.size();
-		    }
+    public boolean isEmpty() {
+        return queue.isEmpty();
+    }
 
-		    public void displayQueue() {
-		        if (!isEmpty()) {
-		            System.out.println("Current Queue: " + queue);
-		        } else {
-		            System.out.println("The queue is empty.");
-		        }
-		    }
-		}
+    public int size() {
+        return queue.size();
+    }
 
-		class HelpDeskStation {
-		    private QueueSystem queueSystem;
+    public void displayQueue() {
+        if (!isEmpty()) {
+            System.out.println("Current Queue: " + queue);
+        } else {
+            System.out.println("The queue is empty.");
+        }
+    }
+}
 
-		    public HelpDeskStation(QueueSystem queueSystem) {
-		        this.queueSystem = queueSystem;
-		    }
+class HelpDeskStation {
+    private QueueSystem queueSystem;
 
-		    public void serveNextCustomer() {
-		        try {
-		            int nextNumber = queueSystem.dequeue();
-		            System.out.println("Serving customer with queue number: " + nextNumber);
-		        } catch (IllegalStateException e) {
-		            System.out.println("No customers in the queue.");
-		        }
-		    }
+    public HelpDeskStation(QueueSystem queueSystem) {
+        this.queueSystem = queueSystem;
+    }
 
-		    public void resetQueue(int newStartingNumber) {
-		        queueSystem.resetQueue(newStartingNumber);
-		        System.out.println("Queue has been reset. Next customer will receive queue number: " + newStartingNumber);
-		    
-		        
-		    }
-		}
+    public void serveNextCustomer() {
+        try {
+            int nextNumber = queueSystem.dequeue();
+            System.out.println("Serving customer with queue number: " + nextNumber);
+        } catch (IllegalStateException e) {
+            System.out.println("No customers in the queue.");
+        }
+    }
+
+    public void resetQueue(int newStartingNumber) {
+        queueSystem.resetQueue(newStartingNumber);
+        System.out.println("Queue has been reset. Next customer will receive queue number: " + newStartingNumber);
+
+
+    }
+}
