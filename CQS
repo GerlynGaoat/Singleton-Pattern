@@ -17,7 +17,7 @@ public class PagibigQueuingSystem1 {
         while (true) {
 
             System.out.println("Gerlyn Gaoat | 3BSCS-2\n");
-            System.out.println("Centralized Queuing System for Pag-ibig Office\n");
+            System.out.println("Pagibig Centrallized Queuing System\n");
             System.out.println("MENU:");
             System.out.println("1. Enqueue customer");
             System.out.println("2. Serve next customer");
